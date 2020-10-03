@@ -1,7 +1,7 @@
 import sys
 import os
-from PyQt5.QtWidgets import QWidget , QApplication , QPushButton 
-from PyQt5.QtWidgets import  QVBoxLayout , QHBoxLayout , QLabel , QLineEdit
+from PyQt5.QtWidgets import QWidget , QApplication 
+from PyQt5.QtWidgets import QPushButton , QVBoxLayout , QHBoxLayout , QLabel , QLineEdit
 from PyQt5.QtGui     import QPixmap
 class Trojan(QWidget):
     def __init__(self):
@@ -65,13 +65,7 @@ class Trojan(QWidget):
         h_box.addStretch()        
         h_box.addLayout(v_box)
         h_box.addStretch()
-"""
-        self.win        = QPushButton("Windows")        
-        self.lin        = QPushButton("Linux")
-        self.mac        = QPushButton("Mac")
-        self.web        = QPushButton("Php")
-        self.apk        = QPushButton("Android")
-"""
+
 
         
         self.setLayout(h_box)
