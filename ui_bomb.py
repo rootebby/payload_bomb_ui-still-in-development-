@@ -1,7 +1,7 @@
 import sys
-from time import sleep as uyu
 import os
-from PyQt5.QtWidgets import QWidget , QApplication , QPushButton , QVBoxLayout , QHBoxLayout , QLabel , QLineEdit
+from PyQt5.QtWidgets import QWidget , QApplication , QPushButton 
+from PyQt5.QtWidgets import  QVBoxLayout , QHBoxLayout , QLabel , QLineEdit
 from PyQt5.QtGui     import QPixmap
 class Trojan(QWidget):
     def __init__(self):
